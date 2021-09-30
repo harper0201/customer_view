@@ -10,9 +10,15 @@
     <com.example.customer_view.view
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="305dp"
+        android:layout_height="163dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="83dp"
+        android:src="@drawable/cute_cat" />
 
 
 </RelativeLayout>

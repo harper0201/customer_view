@@ -60,21 +60,30 @@ public class view extends View {
         MyRect.top = 100;
         MyRect.right = MyRect.left + SQUARE_SIZE;
         MyRect.bottom = MyRect.top + SQUARE_SIZE;
-        super.onDraw(canvas);
         canvas.drawRect(MyRect, MyPaint);
-
+        //draw a text and line
         canvas.drawText("draw a line", 100, 400, MyPaint);
         canvas.drawLine(100, 500, 600, 500, MyPaint);
          //draw a circle
         canvas.drawCircle(x, y, radius, MyCircle);
     }
 
+    // some animation about circle
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        x= event.getX();
-        y= event.getY();
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                radius = radius + 50;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                x= event.getX();
+                y= event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                radius = radius - 50;
+                break;
+        }
         postInvalidate();
         return true;
     }
-
 }
