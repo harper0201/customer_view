@@ -1,5 +1,6 @@
 package com.example.customer_view;
 
+import android.app.Notification;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.PostProcessor;
 import android.graphics.Rect;
 import android.speech.RecognizerResultsIntent;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -17,6 +19,10 @@ public class view extends View {
     private static final int SQUARE_SIZE = 100;
     private Rect MyRect;
     private Paint MyPaint;
+    private Paint MyCircle;
+    private float x = 400;
+    private float y = 400;
+    private float radius = 100f;
     public view(Context context) {
         super(context);
         init(null);
@@ -37,30 +43,38 @@ public class view extends View {
         init(attrs);
     }
 
-    public void init(AttributeSet attrs){
+    public void init(AttributeSet attrs) {
         MyRect = new Rect();
         MyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         MyPaint.setColor(Color.BLUE);
+        MyPaint.setTextSize(50);
+        MyCircle = new Paint();
+        MyCircle.setAntiAlias(true);
+        MyCircle.setColor(Color.RED);
     }
 
-    public void SwapColor(){
-        //swap color
-        MyPaint.setColor(MyPaint.getColor() == Color.BLUE?Color.RED:Color.BLUE);
-        invalidate();
-    }
 
-    protected void onDraw(Canvas canvas){
+    public void onDraw(Canvas canvas) {
         //draw a rectangle
         MyRect.left = 100;
         MyRect.top = 100;
         MyRect.right = MyRect.left + SQUARE_SIZE;
         MyRect.bottom = MyRect.top + SQUARE_SIZE;
-        canvas.drawRect(MyRect,MyPaint);
+        super.onDraw(canvas);
+        canvas.drawRect(MyRect, MyPaint);
 
-        // draw a circle
-        int radis = 50;
-        float x = MyRect.bottom + 100;
-        float y = MyRect.right;
-        canvas.drawCircle(x,y,radis,MyPaint);
+        canvas.drawText("draw a line", 100, 400, MyPaint);
+        canvas.drawLine(100, 500, 600, 500, MyPaint);
+         //draw a circle
+        canvas.drawCircle(x, y, radius, MyCircle);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        x= event.getX();
+        y= event.getY();
+        postInvalidate();
+        return true;
+    }
+
 }
