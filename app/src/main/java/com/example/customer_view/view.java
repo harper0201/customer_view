@@ -19,7 +19,6 @@ public class view extends View {
     private static final int SQUARE_SIZE = 100;
     private Rect MyRect;
     private Paint MyPaint;
-    private Paint MyCircle;
     private float x = 400;
     private float y = 400;
     private float radius = 100f;
@@ -48,9 +47,10 @@ public class view extends View {
         MyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         MyPaint.setColor(Color.BLUE);
         MyPaint.setTextSize(50);
-        MyCircle = new Paint();
-        MyCircle.setAntiAlias(true);
-        MyCircle.setColor(Color.RED);
+    }
+
+    public void SwapColor() {
+        MyPaint.setColor(MyPaint.getColor() == Color.BLUE ? Color.RED : Color.BLUE);
     }
 
 
@@ -62,10 +62,10 @@ public class view extends View {
         MyRect.bottom = MyRect.top + SQUARE_SIZE;
         canvas.drawRect(MyRect, MyPaint);
         //draw a text and line
-        canvas.drawText("draw a line", 100, 400, MyPaint);
+        canvas.drawText("Touch and move the ball", 100, 400, MyPaint);
         canvas.drawLine(100, 500, 600, 500, MyPaint);
          //draw a circle
-        canvas.drawCircle(x, y, radius, MyCircle);
+        canvas.drawCircle(x, y, radius,MyPaint);
     }
 
     // some animation about circle
@@ -86,4 +86,6 @@ public class view extends View {
         postInvalidate();
         return true;
     }
+
+
 }

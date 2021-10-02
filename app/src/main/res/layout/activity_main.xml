@@ -7,18 +7,27 @@
     tools:context=".MainActivity"
     android:id="@+id/MyLayout">
 
-    <com.example.customer_view.view
+
+    <view
         android:id="@+id/view"
+        class="com.example.customer_view.view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="290dp" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="305dp"
         android:layout_height="163dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="83dp"
+        android:layout_marginBottom="49dp"
         android:src="@drawable/cute_cat" />
 
+    <Button
+        android:id="@+id/swap_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:text="swap color" />
 
 </RelativeLayout>
