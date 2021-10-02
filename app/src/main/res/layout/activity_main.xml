@@ -14,14 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="290dp" />
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="305dp"
-        android:layout_height="163dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="49dp"
-        android:src="@drawable/cute_cat" />
-
     <Button
         android:id="@+id/swap_color"
         android:layout_width="wrap_content"
