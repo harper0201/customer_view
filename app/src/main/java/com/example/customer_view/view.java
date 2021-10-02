@@ -51,6 +51,7 @@ public class view extends View {
 
     public void SwapColor() {
         MyPaint.setColor(MyPaint.getColor() == Color.BLUE ? Color.RED : Color.BLUE);
+        postInvalidate();
     }
 
 
